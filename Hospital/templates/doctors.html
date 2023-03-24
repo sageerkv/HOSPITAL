@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title  %}
+  doctors
+{% endblock title  %}
+{% block nav3 %}
+<li class="nav-item">
+<a class="nav-link p-2 mb-0 bg-white text-success active border border-dark rounded" href="{% url 'doctors' %}">Doctors</a>
+</li>
+{% endblock nav3 %}
+{% block content %}
+<div class="container my-5 p-5 text-center text-white bg-secondary rounded" >
+  <div class="row">
+    <h1 class="text-center text-uppercase">Our Doctors</h1>
+    <hr> 
+  {% for d in doctors  %}
+  <div class="col text-dark">
+   
+    <div class="card border border-dark my-3 text-center" style="width: 18rem;">
+      <img src="{{d.doc_image.url}}" class="card-img-top" style="height: 350px; width: 17.9rem;" alt="...">
+      <div class="card-body">
+        <h4 class="card-title">Dr. {{d.doc_name}}</h4>
+        <p class="card-text">{{d.doc_spec}}</p>
+        <h6>{{d.dep_name}} department</h6>
+      </div>
+    </div>
+  </div>
+   
+  {% endfor %}
+</div>
+</div>
+<br><br>
+{% endblock content %}

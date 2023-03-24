@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title  %}
+  Home
+{% endblock title  %}
+{% block head %}
+Home Page
+{% endblock head %}
+{% block nav1 %}
+<li class="nav-item active">
+  <a class="nav-link p-2 mb-0 bg-white text-success active border border-dark rounded" href="{% url 'home' %}">Home </a>
+</li>
+{% endblock nav1 %}
+{% block content %}
+<style>
+  .hos{
+    width: 100%;
+    height: 40rem;
+  }
+  .caption{
+    font-size: 20px;
+    margin-bottom: 20rem;
+    font-weight: 20px;
+    margin-right: 35rem;
+  }
+</style>
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{% static '/images/Hos1.jpg' %}" class="d-block hos" alt="hospital">
+      <div class="carousel-caption d-none d-md-block caption">
+        <h1 class="text-uppercase text-success" >Welcome to City Hospital</h1>
+        <p class="text-dark">We are here, always by your side. Healing you into good health is our prime objective.
+           We are the health partners you can trust with your life. Our only priority is caring for you.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="{% static '/images/Hos2.jpg' %}" class="d-block hos" alt="doctors">
+      <div class="carousel-caption d-none d-md-block caption">
+        <h1 class="text-uppercase text-success">Our speciality</h1>
+        <p class="text-dark">We provide good care <br>and best treatment</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="{% static '/images/Hos3.jpg' %}" class="d-block hos" alt="laboratory">
+      <div class="carousel-caption d-none d-md-block caption">
+        <h1 class="text-uppercase text-success">Our laboratory</h1>
+        <p class="text-dark">The results you can trust.You can count on our quality.</p>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+{% endblock content %}

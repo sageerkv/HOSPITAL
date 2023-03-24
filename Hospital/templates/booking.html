@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title  %}
+  booking
+{% endblock title  %}
+{% block nav2 %}
+<li class="nav-item">
+  <a class="nav-link p-2 mb-0 bg-white text-success active border border-dark rounded" href="{% url 'booking' %}">Booking</a>
+</li>
+{% endblock nav2 %}
+{% block content %}
+  <h1 class="text-center m-1">Make An Appointment</h1>
+  <hr>
+<div class="container w-50 p-3 text-center my-20 border rounded mb-4 bg-success">
+  <form action=""method="POST">
+    {% csrf_token %}
+    {{form|crispy}}
+    <br>
+    <button class="btn btn-light mb-2" type="submit" onMouseOver="this.style.color='red'"
+    onMouseOut="this.style.color='black'">Submit</button>
+   </form>
+</div>
+{% endblock content %}
