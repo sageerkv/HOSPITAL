@@ -55,7 +55,8 @@ def booking(request):
         form = BookingForm(request.POST)
         if form.is_valid():
             form.save()
-            return render(request, 'confirmation.html')
+            messages.success(request, ("We have received your appointment request, our representative will call you shortly.!"))
+            return redirect('booking')
     form = BookingForm()
     dict_form = {
         'form': form

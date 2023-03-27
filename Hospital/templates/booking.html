@@ -11,13 +11,43 @@
 {% block content %}
   <h1 class="text-center m-1">Make An Appointment</h1>
   <hr>
-<div class="container w-50 p-3 text-center my-20 border rounded mb-4 bg-success">
-  <form action=""method="POST">
-    {% csrf_token %}
-    {{form|crispy}}
-    <br>
-    <button class="btn btn-light mb-2" type="submit" onMouseOver="this.style.color='red'"
-    onMouseOut="this.style.color='black'">Submit</button>
-   </form>
+<br>
+
+<div class="container">
+  {% if messages %}
+  {% for message in messages %}
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{ message }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  </div>
+  {% endfor%}
+  {% endif%}
 </div>
+
+  <br>
+  <br>
+<div class="container w-50 p-3 my-20 border rounded mb-4" style="background-color:hsla(0, 1%, 63%, 0.448) ;">
+  <form action="" method="POST" autocomplete="off" class="fw-semibold">
+    {% csrf_token %}
+    {{form.p_name|as_crispy_field}}
+    {{form.p_phone|as_crispy_field}}
+    {{form.p_email|as_crispy_field}}
+        <div class="row">
+            <div class="col-md-8">
+                {{form.doc_name|as_crispy_field}}
+            </div>
+            <div class="col-md-4">
+                {{form.Booking_date|as_crispy_field}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-success btn-lg col-md-12  d-md-block"><i class="fa-solid fa-database"></i> SUBMIT</button>
+            </div>
+        </div>   
+  </form>
+</div>
+<br>
+<br>
 {% endblock content %}
