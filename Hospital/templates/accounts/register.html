@@ -5,14 +5,29 @@
   register
 {% endblock title  %}
 {% block navbar %}
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 <div class="collapse navbar-collapse justify-content-center col-md-8 navbar-collapse-3">
   <ul class="navbar-nav justify-content-center  fw-bold">
     <li class="nav-item">
-      <a class="nav-link text-success text-center" href="#" style="margin-left:700px; font-size: 1.5rem;">REGISTRATION FORM</a>
+      <a class="nav-link text-success text-center" href="#" style="margin-left:450px; font-size: 1.5rem;">REGISTRATION FORM</a>
     </li>
     <li class="nav-item">
       <a class="nav-link text-dark fa fa-home ms-5" href="{% url 'home' %}" style="font-size:2rem;"></a>
     </li>
+
+    <div id="google_translate_element">
+
+      <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+      }
+      </script>
+
+    </div>
+
+
   </ul>
 </div>
 {% endblock navbar %}
@@ -20,31 +35,46 @@
 
 {% block content %}
 
-{% if form.errors %}
-<div class="alert alert-warning alert-dismissible fade show" role="alert">
-  There was an error with your form....
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
+<div class="container">
+  {% if form.errors %}
+  <div class="alert alert-warning alert-dismissible fade show border border-warning" role="alert">
+    There was an error with your form....
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
 </div>
 {% endif %}
 
-<div class="container" style="margin-top: 30px;">
-  <form action="{% url 'register' %}" method="POST">
+
+<div class="container w-6 0 p-3 my-20 border rounded mb-4" style="background-color:hsl(158, 45%, 74%) ;">
+  <form action="{% url 'register' %}" method="POST" autocomplete="off" class="fw-semibold">
     {% csrf_token %}
     <fieldset class="form-group">
-      <legend class="border-bottom mb-4 text-success">Register Now</legend>
-      {{ form|crispy }}
+      <legend class="border-bottom border-success mb-4 text-success fw-bold">Register Now</legend>
+        {{form.username|as_crispy_field}}
+            <div class="row">
+                <div class="col-md-6">
+                    {{form.first_name|as_crispy_field}}
+                </div>
+                <div class="col-md-6">
+                    {{form.last_name|as_crispy_field}}
+                </div>
+            </div>
+        {{form.email|as_crispy_field}}
+          <div class="row">
+            <div class="col-md-6">
+                {{form.password1|as_crispy_field}}
+            </div>
+            <div class="col-md-6">
+                {{form.password2|as_crispy_field}}
+            </div>
+          </div>
     </fieldset>
-    <div class="form-group" id="signup-button">
-      <button class="btn btn-success">Sign Up</button>
-    </div>
-    <div class="form-group">
-      <small class="text-muted ml-3">Already have an account? <a href="{% url 'login' %}">Sign In</a></small>
-    </div>
+            <div class="form-group" id="signup-button">
+                <button type="submit" class="btn btn-success btn-lg col-md-2">Sign Up</button>
+                <small class="text-muted ms-4">Already have an account? <a href="{% url 'login' %}">Sign In</a></small>
+            </div>
   </form>
 </div>
 <br>
 <br>
-
 {% endblock content %}

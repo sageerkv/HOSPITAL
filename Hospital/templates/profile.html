@@ -1,0 +1,174 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title  %}
+profile
+{% endblock title  %}
+{% block nav %}
+
+<nav class="navbar bg-white  navbar-expand-md sticky-top border-bottom border-dark">
+  <div class="container">
+    <div class="col-3 text-left pl-md-0">
+      <h3 class="text-dark"> City <b class="text-success">Care</b> Hospital </h3>
+    </div>
+    
+    <div class="collapse navbar-collapse justify-content-center col-md-8 navbar-collapse-3">
+      <ul class="navbar-nav justify-content-center  fw-bold" style="gap: 5px;">
+        {% block nav1 %}
+        <li class="nav-item">
+          <a class="nav-link text-dark active" href="{% url 'index' %}">Home </a>
+        </li>
+        {% endblock nav1 %}
+        {% block nav5 %}
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="#contacts">Contact Us</a>
+        </li>
+        {% endblock nav5 %}
+        {% block nav6 %}
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="{% url 'about' %}">About</a>
+        </li>
+        {% endblock nav6 %}
+    
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+        
+
+        {% if user.is_authenticated %}
+        <li class="nav-item ms-4">
+          <a class="nav-link p-2 mb-0 bg-white text-success active border border-dark rounded" href="{% url 'profile' user.username %}">{{user.username}} <i class="fas fa-user"></i></a>
+        </li>
+        <li class="nav-item ms-4">
+          <a class="nav-link text-dark" href="{% url 'logout' %}">Logout</a>
+        </li>
+        {% else %}
+        <li class="nav-item ms-5">
+          <a class="nav-link text-dark" href="{% url 'register' %}">Register</a>
+        </li>
+
+        <li class="nav-item ms-5">
+          <a class="nav-link text-dark" href="{% url 'login' %}">Login</a>
+        </li>
+        {% endif %}
+
+        <div id="google_translate_element" style="margin-left:300px;">
+
+          <script type="text/javascript">
+          function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+          }
+          </script>
+  
+        </div>
+
+      </ul>
+    </div>
+    
+  </div>
+</nav>
+{% endblock nav %}
+{% block content %}
+
+<br>
+<div class="container">
+  {% if messages %}
+  {% for message in messages %}
+  <div class="alert alert-warning alert-dismissible fade show border border-danger" role="alert">
+  {{ message }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+</div>
+  {% endfor%}
+  {% endif%}
+</div>
+
+
+<div class="container w-50 p-3 my-20 border rounded mt-5" style="background-color:hsl(158, 45%, 74%) ;">
+  <legend class="border-bottom border-success mb-4 text-success">Profile Information:</legend>
+  <form action="" method="POST" autocomplete="off" class="fw-semibold">
+    {% csrf_token %}
+
+    <div class="media">
+      <div class="media-body">
+        <h2 class="account-heading">{{ form.instance.username }}
+        </h2>
+        <p class="text-secondary">{{ form.instance.first_name }} {{ form.instance.last_name }}</p>
+        <p class="text-secondary">{{ form.instance.email }}</p>
+      </div>
+    </div>
+
+    {% if user.username == form.instance.username %}
+
+    <fieldset class="form-group">
+      <legend class="border-bottom border-success mb-4 text-success">Edit Profile Information:</legend>
+      <div class="form row">
+        <div class="form-group col-md-6 mb-0">
+          {{ form.first_name|as_crispy_field }}
+        </div>
+        <div class="form-group col-md-6 mb-0">
+          {{ form.last_name|as_crispy_field }}
+        </div>
+      </div>
+      {{ form.email|as_crispy_field }}
+      <a href="{% url 'password_change' %}">change password ?</a>
+    </fieldset>
+    <br>
+      <div class="form-group">
+        <button class="btn btn-success btn-lg col-md-2">Update</button>
+      </div>
+    {% endif %}
+    <br>
+    <p>
+      <a class="btn btn-success" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+        Booking details
+      </a>
+    </p>
+    <div class="collapse" id="collapseExample">
+      <div class="card card-body">
+        <table class="table table-borderless">
+
+          <thead class="border-bottom fw-bold">
+              <tr>
+                  <td>Patient Name</td>
+                  <td>Patient Phone</td>
+                  <td>Patient Email</td>
+                  <td>Doctor Name</td>
+                  <td>Booking Date</td>
+                  <td>
+                      <a href="{% url 'booking'%}" class="btn btn-outline-success">
+                          <i class="fas fa-plus"> Add New</i>
+                      </a>
+                  </td>
+              </tr>
+          </thead>
+          <tbody>
+              {% for booking in profile %}
+              <tr>
+                  <td>{{booking.p_name}}</td>
+                  <td>{{booking.p_phone}}</td>
+                  <td>{{booking.p_email}}</td>
+                  <td>{{booking.doc_name}}</td>
+                  <td>{{booking.Booking_date}}</td>
+                  <td>
+                      <a href="{% url 'booking_update' booking.id %}" class="btn text-secondary px-0">
+                          <i class="fa-regular fa-pen-to-square fa-2xl"></i>
+                      </a>
+                      <form action="{% url 'booking_delete' booking.id %}" class="d-inline">
+                          {% csrf_token %}
+                          <button type="submit" class="btn">
+                              <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
+                          </button>
+                      </form>
+                  </td>
+              </tr>
+              {% endfor %}
+          </tbody>
+      
+        </table>
+      </div>
+    </div>
+  </form>
+</div>
+<br>
+<br>
+<br>  
+{% endblock content %}

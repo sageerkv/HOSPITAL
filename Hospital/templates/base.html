@@ -17,15 +17,18 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" 
       integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" 
       crossorigin="anonymous" referrerpolicy="no-referrer"/>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       <link rel="stylesheet" href="{% static '/css/style.css'%}">
     <title>{% block title %}base{% endblock title %}</title>
   </head>
   <body>
 
+  {% block nav %}
+
     <nav class="navbar bg-white  navbar-expand-md sticky-top border-bottom border-dark">
       <div class="container">
-        <div class="col-2 text-left pl-md-0">
-          <h3 class="text-dark"> City Hospital </h3>
+        <div class="col-3 text-left pl-md-0">
+          <h3 class="text-dark"> City <b class="text-success">Care</b> Hospital </h3>
         </div>
         
         <div class="collapse navbar-collapse justify-content-center col-md-8 navbar-collapse-3">
@@ -52,7 +55,7 @@
             {% endblock nav4 %}
             {% block nav5 %}
             <li class="nav-item">
-              <a class="nav-link text-dark" href="{% url 'contacts' %}">Contact Us</a>
+              <a class="nav-link text-dark" href="#contacts">Contact Us</a>
             </li>
             {% endblock nav5 %}
             {% block nav6 %}
@@ -60,9 +63,15 @@
               <a class="nav-link text-dark" href="{% url 'about' %}">About</a>
             </li>
             {% endblock nav6 %}
+        
+        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
             
+
             {% if user.is_authenticated %}
-            <li class="nav-item ms-5">
+            <li class="nav-item ms-4">
+              <a class="nav-link text-dark" href="{% url 'profile' user.username %}">{{user.username}} <i class="fas fa-user"></i></a>
+            </li>
+            <li class="nav-item ms-4">
               <a class="nav-link text-dark" href="{% url 'logout' %}">Logout</a>
             </li>
             {% else %}
@@ -75,11 +84,22 @@
             </li>
             {% endif %}
 
+            <div id="google_translate_element">
+
+              <script type="text/javascript">
+              function googleTranslateElementInit() {
+                new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+              }
+              </script>
+      
+            </div>
+
           </ul>
         </div>
         
       </div>
     </nav>
+    {% endblock nav %}
     
     {% block content %}
     
@@ -93,16 +113,44 @@
     
 	
 	
-    <section class="">
-      <footer class="pt-2 pb-2  bg-white text-dark border-top border-dark">
-        <div class="container">
-          <div class="row align-items-center">
-            <div class="col-12 col-md-8">
-              <h4>Emergency Contact Number: 0123456789</h4>
+    <section class="" id="contacts">
+      <footer class="pt-3 pb-2  bg-white text-dark border-top border-success">
+        <div class="container d-flex bd-highlight">
+          <div class="p-2 col-12 col-md-4 bd-highlight text-start">
+            <h3 class="text-dark"> City <b class="text-success">Care</b><br> Hospital </h3>
+            <p><b>Your Life Care destination</b></p>
+          </div>
+          <div class="p-2 col-12 col-md-4 bd-highlight border-dark text-center">
+            <form action="#" class="d-inline">
+              {% csrf_token %}
+              <div class="row ms-4">
+                <div class="col-8">
+                  <textarea name="" cols="12" rows="1" class="form-control border border-success" placeholder="news letter"></textarea>
+                </div>
+                <div class="col-2">
+                <button type="submit" class="btn btn-success">SUBMIT
+                </button>
+                </div>
+              </div>
+            </form>
+            <br>
+            <br>
+            <div class="row">
+              <i class="fa fa-youtube-play col-3" aria-hidden="true"></i>
+              <i class="fa fa-twitter col-3" aria-hidden="true"></i>
+              <i class="fa fa-instagram col-3" aria-hidden="true"></i>
+              <i class="fa fa-snapchat-ghost col-3" aria-hidden="true"></i>
             </div>
-            <div class="col-12 col-md-4 mt-4 mt-md-0 text-center text-md-end">
-              © 2023 City Hospital. All Rights Reserved
-            </div>
+            <br>
+            © 2023 City Care Hospital. All Rights Reserved
+          </div>
+          <div class="p-2 col-12 col-md-4 bd-highlight border-dark text-end">
+            <h6><b class="text-danger">Emergency</b> Contact Number: 0123456789</h6>
+            <p>City care hospital<br>
+              near lulu mall pattani<br>
+              periyaarpuram, kerala<br>
+              pin code: 679456
+            </p>
           </div>
         </div>
       </footer>

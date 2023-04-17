@@ -8,7 +8,7 @@
 </li>
 {% endblock nav3 %}
 {% block content %}
-<div class="container my-5 p-5 text-center text-white bg-secondary rounded" >
+<div class="container my-5 p-3 text-center text-dark border border-success rounded" style="background-color:hsl(158, 45%, 74%) ;">
   <div class="row">
     <h1 class="text-center text-uppercase">Our Doctors</h1>
     <hr> 
@@ -16,7 +16,7 @@
   <div class="col text-dark">
    
     <div class="card border border-dark my-3 text-center" style="width: 18rem;">
-      <img src="{{d.doc_image.url}}" class="card-img-top" style="height: 350px; width: 17.9rem;" alt="...">
+      <img src="{{d.doc_image.url}}" class="card-img-top" style="height: 300px; width: 17.9rem;" alt="...">
       <div class="card-body">
         <h4 class="card-title">Dr. {{d.doc_name}}</h4>
         <p class="card-text">{{d.doc_spec}}</p>
@@ -24,7 +24,6 @@
       </div>
     </div>
   </div>
-   
   {% endfor %}
 </div>
 </div>
