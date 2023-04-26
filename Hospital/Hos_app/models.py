@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -26,3 +27,7 @@ class Booking(models.Model):
     doc_name = models.ForeignKey(Doctors, on_delete= models.CASCADE)
     Booking_date = models.DateField()
     Booked_on = models.DateField(auto_now=True)
+
+class CustumUser(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    profile_picture = models.ImageField(default='default/user.jpg', upload_to='profile_picture')

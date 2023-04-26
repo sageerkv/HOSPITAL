@@ -143,6 +143,12 @@ RECAPTCHA_PUBLIC_KEY = '6Lcc7mwlAAAAAKRTouvq14R1PV9XTnLYj0TDuk9I'
 RECAPTCHA_PRIVATE_KEY = '6Lcc7mwlAAAAALN2U2DR7HRtUK630bCZa6B3yhlK'
 SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
 
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+
+
 # SMTP Configuration
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

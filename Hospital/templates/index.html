@@ -30,7 +30,7 @@ Home Page
   {% if messages %}
   {% for message in messages %}
   <div class="alert alert-warning alert-dismissible fade show border border-warning" role="alert">
-    {{ message }}
+    <strong>Hello {{ user.username }}! </strong> {{ message }}
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
   </div>

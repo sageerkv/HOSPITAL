@@ -73,7 +73,7 @@ profile
   {% if messages %}
   {% for message in messages %}
   <div class="alert alert-warning alert-dismissible fade show border border-danger" role="alert">
-  {{ message }}
+    <strong>Hi {{ user.username }}</strong>,{{ message }}
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
 </div>
@@ -88,6 +88,7 @@ profile
     {% csrf_token %}
 
     <div class="media">
+      <img src="{{ User.CustumUser.profile_picture }}" class="rounded-circle account-img profile-image" alt="user">
       <div class="media-body">
         <h2 class="account-heading">{{ form.instance.username }}
         </h2>

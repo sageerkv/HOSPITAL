@@ -2,11 +2,84 @@
 {% block title  %}
   about
 {% endblock title  %}
+{% load static %}
 {% block nav6 %}
 <li class="nav-item">
 <a class="nav-link p-2 mb-0 bg-white text-success active border border-dark rounded" href="{% url 'about' %}">About</a>
 </li>
 {% endblock nav6 %}
 {% block content %}
-  <h1>about page</h1>
+<br>
+ <div class="container">
+  <div class="row">
+  <div class="col-4"><img src="{% static '/images/about.jpg' %}" height="450"/></div>
+  <div class="col-8">
+  <h1>About Us</h1><hr>
+  <p class="justify-content"><strong>CITY CARE</strong> is a large size of hospital, located in periyaarpuram. We are proud to serve our community and have been
+  providing high-quality care to patients for 10 years.
+  
+  Our hospital has 500 beds and 8 departments, providing a wide range of medical services to our patients. We are equipped
+  with state-of-the-art technology and staffed with highly skilled healthcare professionals who are committed to providing
+  compassionate and personalized care to each patient.
+  
+  Each year, we serve 2500 patients, making us a leading healthcare provider in our region. We are dedicated to meeting
+  the healthcare needs of our community and strive to provide the highest level of care to all who seek our services.
+  
+  Overall, our hospital is an integral part of the community, providing essential healthcare services to patients in need.
+  We are committed to improving the health and well-being of our community through "our mission of provide exceptional,
+  patient-centered healthcare services to our community. We are committed to delivering the highest quality care with
+  compassion, respect, and integrity. Our goal is to promote health and wellness, prevent illness and injury, and provide
+  a safe and welcoming environment for all who seek our services. We strive to be a trusted partner in our patients'
+  health journeys, and we are dedicated to making a positive impact in the lives of those we serve."</p>
+</div>
+</div>
+  </div>
+  
+
 {% endblock content %}
+
+{% block footer %}
+	
+    <section class="fixed-bottom" id="contacts">
+      <footer class="pt-3 pb-2  bg-white text-dark border-top border-success">
+        <div class="container d-flex bd-highlight">
+          <div class="p-2 col-12 col-md-4 bd-highlight text-start">
+            <h3 class="text-dark"> City <b class="text-success">Care</b><br> Hospital </h3>
+            <p><b>Your Life Care destination</b></p>
+          </div>
+          <div class="p-2 col-12 col-md-4 bd-highlight border-dark text-center">
+            <form action="#" class="d-inline">
+              {% csrf_token %}
+              <div class="row ms-4">
+                <div class="col-8">
+                  <textarea name="" cols="12" rows="1" class="form-control border border-success" placeholder="news letter"></textarea>
+                </div>
+                <div class="col-2">
+                <button type="submit" class="btn btn-success">SUBMIT
+                </button>
+                </div>
+              </div>
+            </form>
+            <br>
+            <br>
+            <div class="row">
+              <i class="fa fa-youtube-play col-3" aria-hidden="true"></i>
+              <i class="fa fa-twitter col-3" aria-hidden="true"></i>
+              <i class="fa fa-instagram col-3" aria-hidden="true"></i>
+              <i class="fa fa-snapchat-ghost col-3" aria-hidden="true"></i>
+            </div>
+            <br>
+            © 2023 City Care Hospital. All Rights Reserved
+          </div>
+          <div class="p-2 col-12 col-md-4 bd-highlight border-dark text-end">
+            <h6><b class="text-danger">Emergency</b> Contact Number: 0123456789</h6>
+            <p>City care hospital<br>
+              near lulu mall pattani<br>
+              periyaarpuram, kerala<br>
+              pin code: 679456
+            </p>
+          </div>
+        </div>
+      </footer>
+    </section>
+    {% endblock  %}

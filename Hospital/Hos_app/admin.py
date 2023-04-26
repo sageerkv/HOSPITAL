@@ -1,5 +1,5 @@
 from django.contrib import admin
-from . models import Departments,Doctors,Booking
+from . models import Departments,Doctors,Booking,CustumUser
 
 # Register your models here.
 
@@ -11,3 +11,4 @@ class BookingAdmin(admin.ModelAdmin):
     list_per_page = 10
     
 admin.site.register(Booking,BookingAdmin)
+admin.site.register(CustumUser)
