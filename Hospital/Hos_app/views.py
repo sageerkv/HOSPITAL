@@ -122,6 +122,7 @@ def profile(request, username):
 
     user = get_user_model().objects.filter(username=username).first()
     booked = {'profile':Booking.objects.filter(p_name=username)}
+    
     if user :
         form = UserUpdateForm(instance=user)
         return render(

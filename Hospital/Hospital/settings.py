@@ -121,6 +121,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
+
+STATIC_URL = 'static/'
+STATICFILES_DIRS = [
+    BASE_DIR/ 'static',
+]
+
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
@@ -142,10 +148,6 @@ AUTHENTICATION_BACKENDS = ['Hos_app.backends.EmailBackend']
 RECAPTCHA_PUBLIC_KEY = '6Lcc7mwlAAAAAKRTouvq14R1PV9XTnLYj0TDuk9I'
 RECAPTCHA_PRIVATE_KEY = '6Lcc7mwlAAAAALN2U2DR7HRtUK630bCZa6B3yhlK'
 SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
-
-
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
 
 
 
