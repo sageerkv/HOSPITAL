@@ -29,4 +29,7 @@ This is a web application built using Django framework for managing hospital ope
 # Screenshots/Videos
 
 
+# License
+- This project is licensed under the MIT License.
+  
 
