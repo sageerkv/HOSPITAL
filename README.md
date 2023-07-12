@@ -31,5 +31,5 @@ This is a web application built using Django framework for managing hospital ope
 
 # License
 - This project is licensed under the MIT License.
-# https://github.com/sageerkv/HOSPITAL-MANAGEMENT-AND-PATIENT-BOOKING-SYSTEM/blob/1d825a8ccf88983309c8ac82515e15fe2d07df03/LICENSE  
+- https://github.com/sageerkv/HOSPITAL-MANAGEMENT-AND-PATIENT-BOOKING-SYSTEM/blob/1d825a8ccf88983309c8ac82515e15fe2d07df03/LICENSE  
 
