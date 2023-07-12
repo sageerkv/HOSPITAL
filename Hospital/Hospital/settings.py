@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'Hos_app',
     'crispy_forms',
     'crispy_bootstrap5',
-    'captcha',
+    'captcha', 
 ]
 
 MIDDLEWARE = [
